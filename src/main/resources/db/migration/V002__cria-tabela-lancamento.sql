@@ -5,6 +5,8 @@ CREATE TABLE lancamento
     descricao text NOT NULL,
     data datetime NOT NULL,
     valor decimal(10,2) NOT NULL,
+    tipo ENUM('RECEITA','DESPESA'),
+  	status ENUM('PENDENTE','CANCELADO','EFETIVADO'),
     
     PRIMARY KEY(id),
      
