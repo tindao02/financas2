@@ -59,6 +59,22 @@ public class LancamentoService
 		return toLancamentoOutput(lancamento);
 	}*/
 	
+	public ResponseEntity<Void> delete(Long lancamentoId)
+	{
+		if(!lancamentoExite(lancamentoId)) 
+		{
+			return ResponseEntity.notFound().build();
+		}
+		lancamentoRepository.deleteById(lancamentoId);
+		
+		return ResponseEntity.noContent().build();
+	}
+	
+	private boolean lancamentoExite(Long lancamentoId)
+	{
+		return lancamentoRepository.existsById(lancamentoId);
+	}
+	
 	//==========================
 	private LancamentoOutput toLancamentoOutput(Lancamento lancamento)
 	{
