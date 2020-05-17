@@ -19,5 +19,5 @@ public class LancamentoInput
 	
 	@NotNull
 	@Valid
-	private UsuarioInput usuario;
+	private UsuarioFk usuario;
 }
