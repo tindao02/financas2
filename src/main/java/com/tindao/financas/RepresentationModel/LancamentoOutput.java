@@ -11,7 +11,6 @@ import lombok.Data;
 @Data
 public class LancamentoOutput 
 {
-	private Long id;
 	private UsuarioOutput usuario;
 	private String descricao;
 	private OffsetDateTime data;

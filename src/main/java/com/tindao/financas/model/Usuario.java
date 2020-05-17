@@ -1,5 +1,6 @@
 package com.tindao.financas.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,6 +25,6 @@ public class Usuario
 	private String email;
 	private String senha;
 	
-	@OneToMany(mappedBy = "usuario", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Lancamento> lancamentos;
+	//@OneToMany(mappedBy = "usuario", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	//private List<Lancamento> lancamentos = new ArrayList<>();
 }
