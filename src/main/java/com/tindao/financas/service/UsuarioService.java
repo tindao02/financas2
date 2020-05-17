@@ -22,5 +22,8 @@ public class UsuarioService
 		}
 		return usuarioRepository.save(usuario);
 	}
-	
+	public void excluir(Long usuarioId)
+	{
+		usuarioRepository.deleteById(usuarioId);
+	}
 }
