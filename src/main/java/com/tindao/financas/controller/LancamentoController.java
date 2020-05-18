@@ -7,9 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tindao.financas.RepresentationModel.LancamentoInput;
 import com.tindao.financas.RepresentationModel.LancamentoOutput;
 import com.tindao.financas.service.LancamentoService;
 
@@ -32,11 +35,11 @@ public class LancamentoController
 		return lancamentoService.listar();
 	}
 	
-	/*@PostMapping
-	public LancamentoOutput salvar(LancamentoInput lancamentoInput)
+	@PostMapping
+	public LancamentoOutput salvar(@RequestBody LancamentoInput lancamentoInput)
 	{
-		return null;
-	}*/
+		return lancamentoService.salvar(lancamentoInput);
+	}
 	
 	@DeleteMapping("/{lancamentoId}")
 	public ResponseEntity<Void> delete(@PathVariable Long lancamentoId)

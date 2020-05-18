@@ -1,10 +1,15 @@
 package com.tindao.financas.model;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -20,6 +25,6 @@ public class Usuario
 	private String email;
 	private String senha;
 	
-	//@OneToMany(mappedBy = "usuario", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-	//private List<Lancamento> lancamentos = new ArrayList<>();
+	@OneToMany(mappedBy = "usuario", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Lancamento> lancamentos;
 }

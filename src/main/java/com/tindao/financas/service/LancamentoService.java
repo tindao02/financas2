@@ -14,8 +14,6 @@ import com.tindao.financas.Repository.LancamentoRepository;
 import com.tindao.financas.Repository.UsuarioRepository;
 import com.tindao.financas.RepresentationModel.LancamentoInput;
 import com.tindao.financas.RepresentationModel.LancamentoOutput;
-import com.tindao.financas.RepresentationModel.UsuarioInput;
-import com.tindao.financas.RepresentationModel.UsuarioOutput;
 import com.tindao.financas.model.Lancamento;
 import com.tindao.financas.model.Usuario;
 
@@ -47,17 +45,23 @@ public class LancamentoService
 		return toListLancamentoOutput(lancamentoRepository.findAll());
 	}
 	
-	/*public LancamentoOutput salvar(LancamentoInput lancamentoInput)
+	public LancamentoOutput salvar(LancamentoInput lancamentoInput)
 	{
-		//Optional<Usuario> usuario = usuarioRepository.findById(lancamentoInput.getUsuario().getId());
+		Optional<Usuario> usuario = usuarioRepository.findById(lancamentoInput.getUsuario().getId());
 		
-		Usuario usuario = usuarioRepository.findById(lancamentoInput.getUsuario().getId()).orElseThrow();
-		
-		Lancamento lancamento = toLancamento(lancamentoInput);
-		lancamento.setData(OffsetDateTime.now());
-		
-		return toLancamentoOutput(lancamento);
-	}*/
+		if(usuario.isPresent())
+		{
+			Lancamento lancamento = toLancamento(lancamentoInput);
+			lancamento.setUsuario(usuario.get());
+			lancamento.setData(OffsetDateTime.now());
+			
+			lancamentoRepository.save(lancamento);
+			
+			return toLancamentoOutput(lancamento);
+		}
+		System.out.println("Usuário não existe.");
+		return null;
+	}
 	
 	public ResponseEntity<Void> delete(Long lancamentoId)
 	{
