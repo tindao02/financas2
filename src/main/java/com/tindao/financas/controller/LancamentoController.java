@@ -2,6 +2,8 @@ package com.tindao.financas.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +38,7 @@ public class LancamentoController
 	}
 	
 	@PostMapping
-	public LancamentoOutput salvar(@RequestBody LancamentoInput lancamentoInput)
+	public LancamentoOutput salvar(@Valid @RequestBody LancamentoInput lancamentoInput)
 	{
 		return lancamentoService.salvar(lancamentoInput);
 	}

@@ -26,11 +26,11 @@ public class LancamentoInput
 	@NotNull
 	private BigDecimal valor;
 	
-	@NotBlank
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TipoLancamento tipo;
 	
-	@NotBlank
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private StatusLancamento status;
 }

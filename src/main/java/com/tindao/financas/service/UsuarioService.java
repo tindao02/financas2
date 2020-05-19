@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.tindao.financas.Repository.UsuarioRepository;
 import com.tindao.financas.RepresentationModel.UsuarioInput;
 import com.tindao.financas.RepresentationModel.UsuarioOutput;
+import com.tindao.financas.exceptionhandler.ResourceNotFoundException;
 import com.tindao.financas.model.Usuario;
 
 @Service
@@ -48,7 +49,8 @@ public class UsuarioService
 		
 		if(usuarioExistente != null)
 		{
-			System.out.println("Já existe um cliente cadastrado com este e-mail");
+			//System.out.println("Já existe um cliente cadastrado com este e-mail");
+			throw new ResourceNotFoundException("E-Mail já existente, tente cadastrar com outro e-mail.");
 		}
 		return toUsuarioOutput(usuarioRepository.save(usuario));
 	}

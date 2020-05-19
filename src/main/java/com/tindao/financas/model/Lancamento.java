@@ -6,11 +6,14 @@ import java.time.OffsetDateTime;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tindao.financas.enuns.StatusLancamento;
 import com.tindao.financas.enuns.TipoLancamento;
 
@@ -24,7 +27,9 @@ public class Lancamento
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_id")
+	@JsonIgnore
 	private Usuario usuario;
 	
 	private String descricao;
